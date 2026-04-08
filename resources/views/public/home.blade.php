@@ -93,9 +93,6 @@
                     </a>
                     <hr class="my-1">
                     <p class="text-muted mb-0">Lihat peta sebaran budidaya yang sudah terdaftar:</p>
-                    <a href="{{ route('peta.index') }}" class="btn btn-outline-success rounded-pill px-4">
-                        <i class="bi bi-map me-2"></i>Lihat Peta
-                    </a>
                 </div>
             </div>
         </div>
