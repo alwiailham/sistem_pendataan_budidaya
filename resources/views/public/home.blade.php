@@ -14,9 +14,6 @@
             <a href="{{ route('register') }}" class="btn btn-light btn-lg px-4 fw-semibold text-success">
                 <i class="bi bi-person-plus me-2"></i>Daftar Sekarang
             </a>
-            <a href="{{ route('peta.index') }}" class="btn btn-outline-light btn-lg px-4">
-                <i class="bi bi-map me-2"></i>Lihat Peta
-            </a>
         </div>
     </div>
 
