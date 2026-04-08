@@ -26,7 +26,8 @@ jobs:
 
             echo "=== Pull latest code ==="
             cd /var/www/sistem_pendataan_budidaya
-            git pull origin main
+            git fetch origin main
+            git reset --hard origin/main
 
             echo "=== Install dependencies ==="
             composer install --optimize-autoloader --no-dev
