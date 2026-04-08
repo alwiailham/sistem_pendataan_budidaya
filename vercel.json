@@ -1,0 +1,38 @@
+{
+    "version":2,
+    "framework":null,
+    "functions":{
+        "api/index.php" : {"runtime": "vercel-php@0.9.0"}
+    },
+    "routes": [
+        {
+        "src": "/(.*)",
+        "dest": "/api/index.php"
+
+    }
+],
+
+"env": {
+    "APP_ENV":"procuction",
+    "APP_KEY":"base64:k7e4dRa5TaY0UZJRS5cWNttQ16LlvSSnmUiU2IiAzjU:",
+    "APP_DEBUG":"true",
+    "APP_URL": "",
+    "DB_CONNECTION":"mysql",
+    "DB_HOST":"w-2ka8.h.filess.io",
+    "DB_PORT":"61002",
+    "DB_DATABASE":"budidaya_db_nothingfat",
+    "DB_USERNAME":"budidaya_db_nothingfat",
+    "DB_PASSWORD":"bc223db416f119f0c5312595f2358cb79c69e30c",
+    "APP_CONFIG_CACHE":"/tmp/config.php",
+    "APP_EVENTS_CACHE":"/tmp/events.php",
+    "APP_PACKAGES_CACHE":"/tmp/packages.php",
+    "APP_SERVICES_CACHE":"/tmp/services.php",
+    "VIEW_COMPILED_PATH":"/tmp",
+
+    "CACHE_DRIVER":"array",
+    "LOG_CHANNEL":"stderr",
+    "SESSION_DRIVER":"cookie"
+
+
+}
+}
