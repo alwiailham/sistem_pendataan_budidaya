@@ -1,0 +1,50 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+
+            echo "=== Pull latest code ==="
+            cd /var/www/sistem_pendataan_budidaya
+            git pull origin main
+
+            echo "=== Install dependencies ==="
+            composer install --optimize-autoloader --no-dev
+
+            echo "=== Run migrations ==="
+            php artisan migrate --force
+
+            echo "=== Clear cache ==="
+            php artisan config:clear
+            php artisan cache:clear
+            php artisan view:clear
+            php artisan route:clear
+
+            echo "=== Fix permissions ==="
+            sudo chown -R $USER:www-data storage bootstrap/cache
+            chmod -R 775 storage bootstrap/cache
+
+            echo "=== Reload Nginx ==="
+            sudo systemctl reload nginx
+
+            echo "=== Deploy selesai! ==="
